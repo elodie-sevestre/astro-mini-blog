@@ -22,7 +22,7 @@ const blog = defineCollection({
 // ceci est une nouvelle collection 'ressources'
 
 const ressources = defineCollection({
-  loader: glob({ base: "./src/content/blog", pattern: "**/*.{md,mdx}" }),
+  loader: glob({ base: "./src/content/ressources", pattern: "**/*.{md,mdx}" }),
   schema: () =>
     z.object({
       title: z.string(),
