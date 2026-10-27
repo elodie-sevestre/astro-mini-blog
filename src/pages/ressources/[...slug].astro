@@ -26,7 +26,7 @@ const { Content } = await render(ressource);
     <Header />
     <main>
       <h1>{ressource.data.title}</h1>
-      <p><a href={ressource.data.url}>Voir la ressource</a> ({ressource.data.category})</p>
+      <p><a href={ressource.data.url}>Voir la ressource</a> ({ressource.data.type})</p>
       <Content />  <!-- Le contenu de la page .md, const { Content } = await render(ressource); --->
     </main>
     <Footer />

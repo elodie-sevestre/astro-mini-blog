@@ -19,7 +19,7 @@ const ressources = await getCollection("ressources");
         {ressources.map((ressource) => (
           <li>
             <a href={`/ressources/${ressource.id}/`}>{ressource.data.title}</a>
-            ({ressource.data.category})
+            ({ressource.data.type})
           </li>
         ))}
       </ul>
