@@ -1,0 +1,37 @@
+---
+import { getCollection, render } from "astro:content";
+import BaseHead from "../../components/BaseHead.astro";
+import Footer from "../../components/Footer.astro";
+import Header from "../../components/Header.astro";
+
+// la fonction `getStaticPaths()` renvoie un chemin par fichier de `src/content/evenements/`
+export async function getStaticPaths() {
+  const evenements = await getCollection("evenements");
+  return evenements.map((evenement) => ({
+    params: { slug: evenement.id },
+    props: evenement,
+  }));
+}
+
+const evenement = Astro.props;
+// La fonction `render()` transforme le Markdown de l'événement en composant `<Content />`
+const { Content } = await render(evenement);
+---
+
+<html lang="fr">
+  <head>
+    <BaseHead title={evenement.data.title} description={evenement.data.description} />
+  </head>
+  <body>
+    <Header />
+    <main>
+      <h1>{evenement.data.title}</h1>
+      <p>
+        Le {evenement.data.date.toLocaleDateString("fr-FR")} · {evenement.data.lieu}
+      </p>
+      <p><a href={evenement.data.url}>S'inscrire</a></p>
+      <Content />
+    </main>
+    <Footer />
+  </body>
+</html>

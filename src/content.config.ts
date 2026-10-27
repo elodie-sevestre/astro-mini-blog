@@ -32,6 +32,20 @@ const ressources = defineCollection({
     }),
 });
 
-// const evenements =
+// ceci est une nouvelle collection 'evenements'
 
-export const collections = { blog, ressources };
+const evenements = defineCollection({
+  loader: glob({ base: "./src/content/evenements", pattern: "**/*.{md,mdx}" }),
+  schema: () =>
+    z.object({
+      title: z.string(),
+      description: z.string(),
+      // Lien vers le formulaire d'inscription
+      url: z.url(),
+      // Date de l'événement
+      date: z.coerce.date(),
+      lieu: z.string(),
+    }),
+});
+
+export const collections = { blog, ressources, evenements };
