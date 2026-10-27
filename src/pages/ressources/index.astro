@@ -18,7 +18,7 @@ const ressources = await getCollection("ressources");
       <ul>
         {ressources.map((ressource) => (
           <li>
-            <a href={`/ressources/${ressource.id}/`}>{ressource.data.title}</a>
+            <a href={`${import.meta.env.BASE_URL}ressources/${ressource.id}/`}>{ressource.data.title}</a>
             ({ressource.data.type})
           </li>
         ))}
